@@ -32,3 +32,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# vendor/bundle配下にインストールされたgemをgitの追跡対象から除外する
+# gitのファイル増加を防ぐため
+/vendor/bundle
