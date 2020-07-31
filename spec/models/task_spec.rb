@@ -34,11 +34,11 @@ RSpec.describe Task, type: :model do
 
       context "タイトルが重複している場合" do
         it "無効であること" do
-          task_1 = build(:task, title: "タイトル")
+          task_1 = build(:task, title: task.title)
           expect(task.title).to eq(task_1.title)
         end
         it "エラーメッセージが表示されること" do
-          task_1 = create(:task, title: "タイトル")
+          task_1 = create(:task, title: task.title)
           task.valid?
           expect(task.errors[:title]).to include("has already been taken")
         end
