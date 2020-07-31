@@ -35,7 +35,7 @@ RSpec.describe Task, type: :model do
       context "タイトルが重複している場合" do
         it "無効であること" do
           task_with_duplicated_title = build(:task, title: task.title)
-          expect(task.title).to eq(task_with_duplicated_title.title)
+          expect(task_with_duplicated_title).to be_invalid
         end
         it "エラーメッセージが表示されること" do
           task_with_duplicated_title = create(:task, title: task.title)
