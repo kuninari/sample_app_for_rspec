@@ -21,7 +21,7 @@ RSpec.describe Task, type: :model do
 
     context "ステータスが空の場合" do
       it "無効であること" do
-        task.status = ""
+        task.status = nil
         expect(task).to be_invalid
         expect(task.errors[:status]).to eq ["can't be blank"]
       end
