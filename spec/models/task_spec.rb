@@ -8,6 +8,7 @@ RSpec.describe Task, type: :model do
       context "タイトルとステータスがある場合" do
         it "有効であること" do
           expect(task).to be_valid
+          expect(task.errors).to be_empty
         end
       end
     end
@@ -17,11 +18,7 @@ RSpec.describe Task, type: :model do
         it "無効であること" do
           task.title = ""
           expect(task).to be_invalid
-        end
-        it "エラーメッセージが表示されること" do
-          task.title = ""
-          task.valid?
-          expect(task.errors[:title]).to include("can't be blank")
+          expect(task.errors[:title]).to eq ["can't be blank"]
         end
       end
 
@@ -29,6 +26,7 @@ RSpec.describe Task, type: :model do
         it "無効であること" do
           task.status = ""
           expect(task).to be_invalid
+          expect(task.errors[:status]).to eq ["can't be blank"]
         end
       end
 
@@ -36,11 +34,7 @@ RSpec.describe Task, type: :model do
         it "無効であること" do
           task_with_duplicated_title = build(:task, title: create(:task).title)
           expect(task_with_duplicated_title).to be_invalid
-        end
-        it "エラーメッセージが表示されること" do
-          task_with_duplicated_title = create(:task, title: create(:task).title)
-          task.valid?
-          expect(task.errors[:title]).to include("has already been taken")
+          expect(task_with_duplicated_title.errors[:title]).to eq ["has already been taken"]
         end
       end
     end
