@@ -1,2 +1,6 @@
 # ヘッドレスドライバで、ブラウザの表示有無を切り替える設定
-Capybara.javascript_driver = :selenium_chrome_headless
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :headless_chrome
+  end
+end
