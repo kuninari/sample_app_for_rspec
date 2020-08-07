@@ -27,10 +27,9 @@ RSpec.describe 'UserSessions', type: :system do
   end
 
   describe 'ログイン後' do
-    before { login_as(user) }
-
     context 'ログアウトボタンをクリック' do
       it 'ログアウト処理が成功する' do
+        login_as(user)
         click_link 'Logout'
         expect(page).to have_content 'Logged out'
         expect(current_path).to eq root_path
