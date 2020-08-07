@@ -66,4 +66,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   # specでFactoryBotの記述が省略できる。
   config.include FactoryBot::Syntax::Methods
+  # LoginMacrosモジュールを読み込み
+  config.include LoginMacros
 end
