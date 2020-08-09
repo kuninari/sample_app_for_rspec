@@ -21,7 +21,6 @@ end
 group :test do
   gem 'capybara'
   gem 'webdrivers'
-  gem 'launchy'
 end
 
 group :development do
